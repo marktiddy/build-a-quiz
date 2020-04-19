@@ -12,7 +12,7 @@
 /build
 
 #any keys required
-/keys
+/src/keys
 
 # misc
 .DS_Store
