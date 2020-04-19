@@ -1,6 +1,31 @@
 @import "~bootstrap/scss/bootstrap";
 @import "custom";
 
+//Color variables
+$yellow: #d7a62c;
+$orange: #f8841b;
+$red: #db332c;
+$mauve: #8b2242;
+$purple: #2f1d35;
+
+h1 {
+  font-size: 60px;
+}
+
 .App {
   text-align: center;
+}
+.top-area {
+  background: $purple;
+  color: whitesmoke;
+  text-align: center;
+  margin-bottom: -2px;
+}
+
+.shape-divider {
+  background: $purple;
+  -webkit-clip-path: polygon(0 0, 100% 1%, 100% 75%, 50% 100%, 0 75%);
+  clip-path: polygon(0 0, 100% 1%, 100% 75%, 50% 100%, 0 75%);
+  height: 100px;
+  margin-bottom: 20px;
 }

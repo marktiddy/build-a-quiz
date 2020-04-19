@@ -1,6 +1,15 @@
+//my colors
+$yellow: #d7a62c;
+$orange: #f8841b;
+$red: #db332c;
+$mauve: #8b2242;
+$purple: #2f1d35;
+
 $theme-colors: (
+  "primary": $purple,
   "info": tomato,
   "danger": teal,
+  "dark": $purple,
 );
 
 @import "~bootstrap/scss/bootstrap";

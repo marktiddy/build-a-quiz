@@ -3,6 +3,8 @@ import createDataContext from "./createDataContext";
 //Our reducer to handle actions
 const quizReducer = (state, action) => {
   switch (action.type) {
+    case "LOAD_QUIZ":
+      return action.payload;
     default:
       return state;
   }
@@ -16,56 +18,17 @@ const addQuiz = (dispatch) => () => {
   //This is an example
   dispatch({ type: "ADD_QUIZ_EXAMPLE", payload: "ourquiz" });
 };
+const loadQuizState = (dispatch) => (quiz) => {
+  dispatch({ type: "LOAD_QUIZ", payload: quiz });
+};
 
 export const { Provider, Context } = createDataContext(
   quizReducer,
   //Our functions to access
   {
     addQuiz,
+    loadQuizState,
   },
-  //Our initial state
-  {
-    doc1: {
-      details: {
-        id: 1,
-        name: "Test Quiz",
-        questions: 2,
-      },
-      questions: [
-        {
-          number: 1,
-          question: "Is this quiz a quiz?",
-          answers: ["Yes", "No", "Not sure"],
-          correct_answer: 1,
-        },
-        {
-          number: 2,
-          question: "Is this the real life...",
-          answers: ["or are we pretending?", "or is it just fantasy?"],
-          correct_answer: 2,
-        },
-      ],
-    },
-    doc2: {
-      details: {
-        id: 1,
-        name: "Test Quiz",
-        questions: 2,
-      },
-      questions: [
-        {
-          number: 1,
-          question: "Is this quiz a quiz?",
-          answers: ["Yes", "No", "Not sure"],
-          correct_answer: 1,
-        },
-        {
-          number: 2,
-          question: "Is this the real life...",
-          answers: ["or are we pretending?", "or is it just fantasy?"],
-          correct_answer: 2,
-        },
-      ],
-    },
-  }
+  //Our initial state - empty because we use firebase to populate
+  {}
 );
