@@ -9,7 +9,7 @@ const QuizCard = ({ title, image, description }) => {
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{description}</Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary">Play Quiz</Button>
       </Card.Body>
     </Card>
   );

@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import "./App.scss";
 import { Context } from "./context/QuizContext";
-import { Container, Row, Col } from "react-bootstrap";
+
+//Routing imports
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 //import firebase
 import firebase from "./keys/firebase.js";
@@ -9,10 +11,10 @@ import firebase from "./keys/firebase.js";
 //Components
 import Header from "./components/Header";
 import Jumbo from "./components/Jumbo";
-import QuizCard from "./components/QuizCard";
+import QuizPickerScreen from "./screens/QuizPickerScreen";
 
 const App = () => {
-  const { state, loadQuizState } = useContext(Context);
+  const { loadQuizState } = useContext(Context);
 
   useEffect(() => {
     //load firebase when we start and update the state
@@ -26,24 +28,24 @@ const App = () => {
     });
   }, []);
 
+  // return (
+  //   <>
+  //     <Header />
+  //     <Jumbo />
+  //     <QuizPickerScreen />
+  //   </>
+  // );
   return (
     <>
       <Header />
       <Jumbo />
-      <Container>
-        <Row>
-          {state[0]
-            ? state.map((m) => (
-                <Col>
-                  <QuizCard
-                    title={m.details.name}
-                    description={m.details.description}
-                  />
-                </Col>
-              ))
-            : "Loading Quizzes"}
-        </Row>
-      </Container>
+      <Router>
+        <Switch>
+          <Route path="/">
+            <QuizPickerScreen />
+          </Route>
+        </Switch>
+      </Router>
     </>
   );
 };
