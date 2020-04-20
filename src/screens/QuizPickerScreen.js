@@ -5,15 +5,17 @@ import { Context } from "../context/QuizContext";
 
 const QuizPickerScreen = () => {
   const { state } = useContext(Context);
+  console.log(state);
   return (
     <Container>
       <Row>
         {state[0] ? (
           state.map((m) => (
-            <Col>
+            <Col key={m.details.id}>
               <QuizCard
                 title={m.details.name}
                 description={m.details.description}
+                key={m.details.id}
               />
             </Col>
           ))

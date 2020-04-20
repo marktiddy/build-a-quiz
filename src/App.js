@@ -12,6 +12,7 @@ import firebase from "./keys/firebase.js";
 import Header from "./components/Header";
 import Jumbo from "./components/Jumbo";
 import QuizPickerScreen from "./screens/QuizPickerScreen";
+import WelcomeScreen from "./screens/WelcomeScreen";
 
 const App = () => {
   const { loadQuizState } = useContext(Context);
@@ -28,21 +29,17 @@ const App = () => {
     });
   }, []);
 
-  // return (
-  //   <>
-  //     <Header />
-  //     <Jumbo />
-  //     <QuizPickerScreen />
-  //   </>
-  // );
   return (
     <>
       <Header />
       <Jumbo />
       <Router>
         <Switch>
-          <Route path="/">
+          <Route path="/play">
             <QuizPickerScreen />
+          </Route>
+          <Route path="/">
+            <WelcomeScreen />
           </Route>
         </Switch>
       </Router>
