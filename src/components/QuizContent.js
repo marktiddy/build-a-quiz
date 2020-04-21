@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Context } from "../context/Store";
+import Question from "./Question";
 
 const QuizContent = () => {
   const [state, dispatch] = useContext(Context);
@@ -16,6 +17,11 @@ const QuizContent = () => {
   //If an answer is right a score state is updated and the question number is updated
   //Add a progress bar
 
+  //Helper functions
+  const processAnswer = () => {
+    console.log("processing");
+  };
+
   return (
     <>
       <Container>
@@ -29,6 +35,10 @@ const QuizContent = () => {
                     Question {questionNum + 1}.{" "}
                     {quiz[0].questions[questionNum].question}
                   </h4>
+                  <Question
+                    question={quiz[0].questions[questionNum]}
+                    sendAnswer={() => processAnswer()}
+                  />
                   <p>
                     {quiz[0].questions[questionNum].answers.map((a) => (
                       <p>{a}</p>
