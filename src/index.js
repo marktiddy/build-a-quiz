@@ -4,14 +4,11 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 // import "bootstrap/dist/css/bootstrap.min.css";
-import { Provider } from "../src/context/QuizContext";
 
 ReactDOM.render(
-  <Provider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
