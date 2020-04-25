@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, ProgressBar } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Context } from "../context/Store";
 import Question from "./Question";
@@ -8,6 +8,8 @@ import { v4 as uuidv4 } from "uuid";
 const QuizContent = () => {
   const [state, dispatch] = useContext(Context);
   const [questionNum, setQuestionNum] = useState(0);
+  const [score, setScore] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   //Set Up
   let { quizId } = useParams();
@@ -21,12 +23,13 @@ const QuizContent = () => {
   //Helper functions
   const processAnswer = (selected) => {
     if (quiz[0].questions[questionNum].answer === selected) {
-      console.log("correct");
-    } else {
-      console.log("incorrect");
+      setScore(score + 1);
     }
-    console.log(quiz[0].questions[questionNum].answer);
-    console.log(selected);
+    //Update our progress
+    setQuestionNum(questionNum + 1);
+    setProgress(
+      ((questionNum + 1) / quiz[0].questions.length).toFixed(2) * 100
+    );
   };
 
   return (
@@ -36,6 +39,15 @@ const QuizContent = () => {
           {quiz[0] ? (
             <Col>
               <h2 className="quiz-title">{quiz[0].details.name}</h2>
+              <div>
+                <ProgressBar
+                  striped
+                  animated
+                  variant="info"
+                  now={progress}
+                  label={`${progress}% through quiz`}
+                />
+              </div>
               {quiz[0].questions[questionNum] ? (
                 <>
                   <Question
@@ -43,6 +55,7 @@ const QuizContent = () => {
                     num={questionNum}
                     sendAnswer={(selected) => processAnswer(selected)}
                     key={uuidv4()}
+                    score={score}
                   />
                 </>
               ) : (

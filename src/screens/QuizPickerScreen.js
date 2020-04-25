@@ -7,10 +7,8 @@ import { Context } from "../context/Store";
 import {
   BrowserRouter as Router,
   useRouteMatch,
-  useParams,
   Switch,
   Route,
-  matchPath,
 } from "react-router-dom";
 
 const QuizPickerScreen = () => {
