@@ -13,6 +13,7 @@ import Header from "../components/Header";
 import Jumbo from "../components/Jumbo";
 import QuizPickerScreen from "./QuizPickerScreen";
 import WelcomeScreen from "./WelcomeScreen";
+import Footer from "./Footer";
 
 const MainScreen = () => {
   const [state, dispatch] = useContext(Context);
@@ -43,6 +44,7 @@ const MainScreen = () => {
           </Route>
         </Switch>
       </Router>
+      <Footer />
     </>
   );
 };
