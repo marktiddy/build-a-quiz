@@ -5,6 +5,7 @@ import { Context } from "../context/Store";
 
 import QuizDetails from "../components/QuizForm/QuizDetails";
 import QuizQuestions from "../components/QuizForm/QuizQuestions";
+import Success from "../components/QuizForm/Success";
 
 import firebase from "../keys/firebase";
 
@@ -12,6 +13,7 @@ const CreateQuizScreen = () => {
   const [state, dispatch] = useContext(Context);
   const [quizDetails, setQuizDetails] = useState([]);
   const [questionList, setQuestionList] = useState([]);
+  const [successState, setSuccessState] = useState(false);
 
   //Set up firebase
   var db = firebase.firestore();
@@ -47,59 +49,62 @@ const CreateQuizScreen = () => {
     db.collection("quizzes")
       .doc(uuidv4())
       .set(quizObject)
-      .then(() => console.log("success"))
+      .then(() => setSuccessState(true))
       .catch((e) => console.log(e));
-
-    console.log(quizObject);
-    console.log(state);
   };
 
   return (
-    <Container>
-      <Row>
-        <Col className="text-center">
-          <h2 class="quiz-title">Create Your Own Quiz</h2>
-          <p>To create your own quiz simple use the form below</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          {quizDetails.name ? (
-            <QuizQuestions
-              questionCount={questionList.length}
-              handleQuestions={(question, answers, correctAnswer) =>
-                handleQuestions(question, answers, correctAnswer)
-              }
-            />
-          ) : (
-            <QuizDetails
-              setDetails={(name, description) =>
-                handleQuizDetails(name, description)
-              }
-            />
-          )}
-        </Col>
-        <Col xs={12} md={4}>
-          <p className="purple-text">
-            {quizDetails.name
-              ? `${quizDetails.name} Questions`
-              : "Questions in your quiz..."}
-          </p>
-          <ol>
-            {questionList.map((q, idx) => {
-              return (
-                <li id={idx} key={idx}>
-                  {q.question}
-                </li>
-              );
-            })}
-          </ol>
-          <Button onClick={() => submitQuiz()} type="button" size="sm">
-            Finished adding questions?
-          </Button>
-        </Col>
-      </Row>
-    </Container>
+    <>
+      {successState === true ? (
+        <Success quizId={quizDetails.id} quizName={quizDetails.name} />
+      ) : (
+        <Container>
+          <Row>
+            <Col className="text-center">
+              <h2 class="quiz-title">Create Your Own Quiz</h2>
+              <p>To create your own quiz simple use the form below</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              {quizDetails.name ? (
+                <QuizQuestions
+                  questionCount={questionList.length}
+                  handleQuestions={(question, answers, correctAnswer) =>
+                    handleQuestions(question, answers, correctAnswer)
+                  }
+                />
+              ) : (
+                <QuizDetails
+                  setDetails={(name, description) =>
+                    handleQuizDetails(name, description)
+                  }
+                />
+              )}
+            </Col>
+            <Col xs={12} md={4}>
+              <p className="purple-text">
+                {quizDetails.name
+                  ? `${quizDetails.name} Questions`
+                  : "Questions in your quiz..."}
+              </p>
+              <ol>
+                {questionList.map((q, idx) => {
+                  return (
+                    <li id={idx} key={idx}>
+                      {q.question}
+                    </li>
+                  );
+                })}
+              </ol>
+              <Button onClick={() => submitQuiz()} type="button" size="sm">
+                Finished adding questions?
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      )}
+    </>
   );
 };
 
