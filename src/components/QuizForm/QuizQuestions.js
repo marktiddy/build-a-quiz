@@ -7,7 +7,7 @@ import { Form, Button, Container, Col, Row } from "react-bootstrap";
 //There should be a 'Done' button on the left list that shows them all their questions to confirm
 //It should then add it to the whole question database
 
-const QuizQuestions = ({ setDetails, questionCount }) => {
+const QuizQuestions = ({ handleQuestions, questionCount }) => {
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState(["", ""]);
   const [correctAnswer, setCorrectAnswer] = useState("");
@@ -33,10 +33,23 @@ const QuizQuestions = ({ setDetails, questionCount }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    //Check the question has a question Mark
+    const sub = question.substr(question.length - 1);
+    if (sub !== "?") {
+      const questionToSubmit = question + "?";
+      setQuestion(questionToSubmit);
+    }
+    handleQuestions(question, answers, correctAnswer);
+    //Now clear all our questions
+    setQuestion("");
+    setAnswers(["", ""]);
+    setCorrectAnswer("");
   };
 
-  const removeAnswerOption = ({ idx }) => {
-    console.log(idx);
+  const removeAnswerOption = (idx) => {
+    const newAns = [...answers];
+    newAns.splice(idx, 1);
+    setAnswers(newAns);
   };
 
   return (
@@ -67,7 +80,7 @@ const QuizQuestions = ({ setDetails, questionCount }) => {
               />
               {idx > 1 ? (
                 <p className="remove-answer-text">
-                  <a href="#" onClick={(idx) => removeAnswerOption(idx)}>
+                  <a href="#" onClick={() => removeAnswerOption(idx)}>
                     Remove Answer
                   </a>
                 </p>
@@ -76,21 +89,27 @@ const QuizQuestions = ({ setDetails, questionCount }) => {
           );
         })}
         <Form.Group>
-          <Button onClick={() => addAnswer()} type="button" size="sm">
+          <Button
+            onClick={() => addAnswer()}
+            type="button"
+            size="sm"
+            className="add-another-answer"
+            variant="danger"
+          >
             Add another answer
           </Button>
         </Form.Group>
-        <Form.Group>
+        <Form.Group className="select-correct-answer">
           <Form.Label className="purple-text">
             Select the Correct Answer
           </Form.Label>
           <Form.Control
             as="select"
             id="answer-select"
-            placeholder="Select the correct answer"
             onChange={handleSelect}
+            required
           >
-            <option value="" selected disabled>
+            <option value="" defaultValue disabled>
               Select the correct answer
             </option>
             {answers.map((a, idx) => {

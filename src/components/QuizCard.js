@@ -11,10 +11,12 @@ const QuizCard = ({
   const match = useRouteMatch();
   return (
     <>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={image ? image : QuizImage} />
+      <Card style={{ width: "18rem" }} className="quiz-chooser-card">
+        {/* <Card.Img variant="top" src={image ? image : QuizImage} /> */}
+        <Card.Header className="quiz-chooser-card--header text-capitalize">
+          {name}
+        </Card.Header>
         <Card.Body>
-          <Card.Title className="text-capitalize">{name}</Card.Title>
           <Card.Text>{description}</Card.Text>
           <Button variant="primary" href={`${match.url}/${id}`}>
             Play Quiz

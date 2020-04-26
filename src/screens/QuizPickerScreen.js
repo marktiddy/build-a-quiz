@@ -23,7 +23,12 @@ const QuizPickerScreen = () => {
           <Route path={match.path}>
             {quizList ? (
               quizList.map((m) => (
-                <Col key={m.details.id}>
+                <Col
+                  md={6}
+                  xs={12}
+                  key={m.details.id}
+                  className="quiz-picker-col"
+                >
                   <QuizCard content={m} key={m.details.id} />
                 </Col>
               ))
