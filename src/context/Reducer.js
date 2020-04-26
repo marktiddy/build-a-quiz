@@ -6,9 +6,7 @@ const Reducer = (state, action) => {
         quizzes: action.payload,
       };
     case "ADD_QUIZ":
-      //todo
-      //something like return {...state,quizzes:state.quizzes.concat(action.payload)}
-      return state;
+      return { ...state, quizzes: [...state.quizzes, action.payload] };
     default:
       return state;
   }

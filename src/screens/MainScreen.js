@@ -9,10 +9,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import firebase from "../keys/firebase.js";
 
 //Components
-import Header from "../components/Header";
+import NavigationBar from "../components/NavigationBar";
 import Jumbo from "../components/Jumbo";
 import QuizPickerScreen from "./QuizPickerScreen";
 import WelcomeScreen from "./WelcomeScreen";
+import CreateQuizScreen from "./CreateQuizScreen";
 import Footer from "./Footer";
 
 const MainScreen = () => {
@@ -32,12 +33,15 @@ const MainScreen = () => {
 
   return (
     <>
-      <Header />
+      <NavigationBar />
       <Jumbo />
       <Router>
         <Switch>
           <Route path="/play">
             <QuizPickerScreen />
+          </Route>
+          <Route path="/create">
+            <CreateQuizScreen />
           </Route>
           <Route path="/">
             <WelcomeScreen />

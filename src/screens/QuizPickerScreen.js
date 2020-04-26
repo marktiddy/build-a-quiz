@@ -4,12 +4,7 @@ import QuizCard from "../components/QuizCard";
 import QuizContent from "../components/QuizContent";
 import { Context } from "../context/Store";
 
-import {
-  BrowserRouter as Router,
-  useRouteMatch,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { useRouteMatch, Switch, Route } from "react-router-dom";
 
 const QuizPickerScreen = () => {
   const [state, dispatch] = useContext(Context);
@@ -33,10 +28,9 @@ const QuizPickerScreen = () => {
                 </Col>
               ))
             ) : (
-              <Col className="loading-class">
-                <Spinner animation="border" role="status">
-                  <span className="sr-only">Loading...</span>
-                </Spinner>
+              <Col>
+                <p className="loading-quiz">Loading...</p>
+                <Spinner animation="grow" variant="primary" />
               </Col>
             )}
           </Route>

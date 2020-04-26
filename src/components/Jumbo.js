@@ -5,7 +5,7 @@ const Jumbo = () => {
   return (
     <>
       <Jumbotron fluid className="top-area">
-        <h1>Build-a-Quiz</h1>
+        <h1 className="top-area--title">Build-a-Quiz</h1>
         <p>Build your own quiz...invite others to join in</p>
       </Jumbotron>
       <div className="shape-divider"></div>

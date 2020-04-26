@@ -25,7 +25,9 @@ const WelcomeScreen = () => {
               <Card.Text>
                 Are you full of questions? Use our creator to make your own quiz
               </Card.Text>
-              <Button variant="primary">Create a Quiz</Button>
+              <Button variant="primary" href="/create">
+                Create a Quiz
+              </Button>
             </Card.Body>
           </Card>
         </Col>

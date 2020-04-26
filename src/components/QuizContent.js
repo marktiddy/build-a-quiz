@@ -8,7 +8,7 @@ import {
   Button,
 } from "react-bootstrap";
 
-import { useParams, useRouteMatch } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Context } from "../context/Store";
 import Question from "./Question";
 import { v4 as uuidv4 } from "uuid";
@@ -18,7 +18,6 @@ const QuizContent = () => {
   const [questionNum, setQuestionNum] = useState(0);
   const [score, setScore] = useState(0);
   const [progress, setProgress] = useState(0);
-  const match = useRouteMatch();
 
   //Set Up
   let { quizId } = useParams();
@@ -75,11 +74,7 @@ const QuizContent = () => {
                       Time to revise...better luck next time
                     </p>
                   )}
-                  <Button
-                    variant="primary"
-                    size="sm"
-                    href={`${match.url}/play`}
-                  >
+                  <Button variant="primary" size="sm" href={`/play`}>
                     Play Another Quiz
                   </Button>
                 </div>
