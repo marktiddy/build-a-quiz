@@ -129,6 +129,25 @@ h1 {
   text-transform: capitalize;
 }
 
+.remove-answer-text {
+  text-align: right;
+}
+
+.remove-answer-text a {
+  text-align: right;
+  color: $purple;
+  font-weight: 600;
+  font-size: 12px;
+  margin-right: 2px;
+  padding: 2px;
+}
+
+.remove-answer-text a:hover {
+  color: $orange;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
 .footer {
   background: $purple;
   color: white;

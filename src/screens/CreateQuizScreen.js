@@ -9,6 +9,7 @@ import QuizQuestions from "../components/QuizForm/QuizQuestions";
 const CreateQuizScreen = () => {
   const [state, dispatch] = useContext(Context);
   const [quizDetails, setQuizDetails] = useState([]);
+  const [questionList, setQuestionList] = useState([]);
 
   //Component notes
   //2 parts - quiz details, quiz content
@@ -37,7 +38,7 @@ const CreateQuizScreen = () => {
       <Row>
         <Col>
           {quizDetails.name ? (
-            <QuizQuestions />
+            <QuizQuestions questionCount={questionList.length} />
           ) : (
             <QuizDetails
               setDetails={(name, description) =>
