@@ -82,6 +82,31 @@ h1 {
   text-align: right;
 }
 
+.show-answers-span {
+  color: $orange;
+}
+
+.purple-text {
+  color: $purple;
+  font-weight: 600;
+}
+
+.orange-text {
+  color: $orange;
+  font-weight: 600;
+}
+
+.loading-quiz {
+  color: $purple;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 20px;
+}
+
+.score-board {
+  margin-bottom: 40px;
+}
+
 .footer {
   background: $purple;
   color: white;
