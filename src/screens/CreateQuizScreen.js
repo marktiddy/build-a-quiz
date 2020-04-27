@@ -53,6 +53,12 @@ const CreateQuizScreen = () => {
       .catch((e) => console.log(e));
   };
 
+  const deleteQuestion = (idx) => {
+    const newList = questionList;
+    newList.splice(idx, 1);
+    setQuestionList(newList);
+  };
+
   return (
     <>
       {successState === true ? (
@@ -93,6 +99,11 @@ const CreateQuizScreen = () => {
                   return (
                     <li id={idx} key={idx}>
                       {q.question}
+                      <p className="remove-answer-text">
+                        <a href="#" onClick={() => deleteQuestion(idx)}>
+                          Delete
+                        </a>
+                      </p>
                     </li>
                   );
                 })}

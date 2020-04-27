@@ -39,6 +39,11 @@ const QuizQuestions = ({ handleQuestions, questionCount }) => {
       const questionToSubmit = question + "?";
       setQuestion(questionToSubmit);
     }
+    //check our correct answer isn't blank
+    if (correctAnswer === "") {
+      setCorrectAnswer(answers[0]);
+    }
+
     handleQuestions(question, answers, correctAnswer);
     //Now clear all our questions
     setQuestion("");
@@ -109,9 +114,6 @@ const QuizQuestions = ({ handleQuestions, questionCount }) => {
             onChange={handleSelect}
             required
           >
-            <option value="" defaultValue disabled>
-              Select the correct answer
-            </option>
             {answers.map((a, idx) => {
               return a === "" ? null : <option id={idx}>{a}</option>;
             })}
