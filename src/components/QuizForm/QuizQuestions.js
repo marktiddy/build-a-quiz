@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import { Form, Button, Container, Col, Row } from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import { Form, Button } from 'react-bootstrap';
 
-//TODO
-//Allow user to add questions and then select the correct answer
-//They submit the question and it appears in the left list
-//There should be a 'Done' button on the left list that shows them all their questions to confirm
-//It should then add it to the whole question database
+const QuizQuestions = ({
+  handleQuestions,
+  questionCount,
+  questionToEdit,
+  idxToEdit,
+}) => {
+  const [question, setQuestion] = useState('');
+  const [answers, setAnswers] = useState(['', '']);
+  const [correctAnswer, setCorrectAnswer] = useState('');
 
-const QuizQuestions = ({ handleQuestions, questionCount }) => {
-  const [question, setQuestion] = useState("");
-  const [answers, setAnswers] = useState(["", ""]);
-  const [correctAnswer, setCorrectAnswer] = useState("");
+  useEffect(() => {
+    if (questionToEdit !== null) {
+      const { question, answer, answers } = questionToEdit.question;
+      setQuestion(question);
+      setCorrectAnswer(answer);
+      setAnswers(answers);
+    }
+  }, [questionToEdit]);
 
   const addAnswer = () => {
-    const newAnswers = [...answers, ""];
+    const newAnswers = [...answers, ''];
     setAnswers(newAnswers);
   };
 
@@ -35,20 +43,24 @@ const QuizQuestions = ({ handleQuestions, questionCount }) => {
     event.preventDefault();
     //Check the question has a question Mark
     const sub = question.substr(question.length - 1);
-    if (sub !== "?") {
-      const questionToSubmit = question + "?";
+    if (sub !== '?') {
+      const questionToSubmit = question + '?';
       setQuestion(questionToSubmit);
     }
     //check our correct answer isn't blank
-    if (correctAnswer === "") {
-      setCorrectAnswer(answers[0]);
+    var rightAnswer = '';
+    if (correctAnswer === '') {
+      const newAns = answers[0];
+      rightAnswer = newAns;
+    } else {
+      rightAnswer = correctAnswer;
     }
 
-    handleQuestions(question, answers, correctAnswer);
+    handleQuestions(question, answers, rightAnswer, idxToEdit);
     //Now clear all our questions
-    setQuestion("");
-    setAnswers(["", ""]);
-    setCorrectAnswer("");
+    setQuestion('');
+    setAnswers(['', '']);
+    setCorrectAnswer('');
   };
 
   const removeAnswerOption = (idx) => {
@@ -62,7 +74,11 @@ const QuizQuestions = ({ handleQuestions, questionCount }) => {
       <Form onSubmit={handleSubmit}>
         <p className="purple-text">Let's add some questions...</p>
         <Form.Group controlId="questionForm.questionInput">
-          <Form.Label>Question {questionCount + 1}</Form.Label>
+          <Form.Label>
+            {idxToEdit === null
+              ? `Question ${questionCount + 1}`
+              : `Editing Question ${idxToEdit + 1}`}
+          </Form.Label>
           <Form.Control
             type="text"
             required
@@ -85,9 +101,12 @@ const QuizQuestions = ({ handleQuestions, questionCount }) => {
               />
               {idx > 1 ? (
                 <p className="remove-answer-text">
-                  <a href="#" onClick={() => removeAnswerOption(idx)}>
+                  <Button
+                    onClick={() => removeAnswerOption(idx)}
+                    className="inline-button"
+                  >
                     Remove Answer
-                  </a>
+                  </Button>
                 </p>
               ) : null}
             </Form.Group>
@@ -115,7 +134,7 @@ const QuizQuestions = ({ handleQuestions, questionCount }) => {
             required
           >
             {answers.map((a, idx) => {
-              return a === "" ? null : <option id={idx}>{a}</option>;
+              return a === '' ? null : <option id={idx}>{a}</option>;
             })}
           </Form.Control>
         </Form.Group>
@@ -126,7 +145,7 @@ const QuizQuestions = ({ handleQuestions, questionCount }) => {
           className="question-form--submit"
           size="sm"
         >
-          Submit Question
+          {idxToEdit === null ? 'Submit Question' : 'Update Question'}
         </Button>
 
         <p className="orange-text divider-text">

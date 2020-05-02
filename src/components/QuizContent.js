@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState } from 'react';
 import {
   Container,
   Row,
@@ -6,15 +6,15 @@ import {
   ProgressBar,
   Spinner,
   Button,
-} from "react-bootstrap";
+} from 'react-bootstrap';
 
-import { useParams } from "react-router-dom";
-import { Context } from "../context/Store";
-import Question from "./Question";
-import { v4 as uuidv4 } from "uuid";
+import { useParams } from 'react-router-dom';
+import { Context } from '../context/Store';
+import Question from './Question';
+import { v4 as uuidv4 } from 'uuid';
 
 const QuizContent = () => {
-  const [state, dispatch] = useContext(Context);
+  const [state] = useContext(Context);
   const [questionNum, setQuestionNum] = useState(0);
   const [score, setScore] = useState(0);
   const [progress, setProgress] = useState(0);

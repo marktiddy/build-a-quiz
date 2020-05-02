@@ -1,5 +1,5 @@
-@import "~bootstrap/scss/bootstrap";
-@import "custom";
+@import '~bootstrap/scss/bootstrap';
+@import 'custom';
 
 //Color variables
 $yellow: #d7a62c;
@@ -142,13 +142,22 @@ h1 {
   text-align: right;
 }
 
-.remove-answer-text a {
+.remove-answer-text a,
+.inline-button {
   text-align: right;
+  background: none;
+  border: none;
   color: $purple;
   font-weight: 600;
   font-size: 12px;
-  margin-right: 2px;
+  margin: 2px;
   padding: 2px;
+}
+
+.reset-button-area {
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 50px;
 }
 
 .remove-answer-text a:hover {

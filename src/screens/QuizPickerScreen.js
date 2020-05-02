@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
-import QuizCard from "../components/QuizCard";
-import QuizContent from "../components/QuizContent";
-import { Context } from "../context/Store";
+import React, { useContext } from 'react';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
+import QuizCard from '../components/QuizCard';
+import QuizContent from '../components/QuizContent';
+import { Context } from '../context/Store';
 
-import { useRouteMatch, Switch, Route } from "react-router-dom";
+import { useRouteMatch, Switch, Route } from 'react-router-dom';
 
 const QuizPickerScreen = () => {
-  const [state, dispatch] = useContext(Context);
+  const [state] = useContext(Context);
   let match = useRouteMatch();
 
   const quizList = state.quizzes;
