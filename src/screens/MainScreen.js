@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react';
 //import store
 import { Context } from '../context/Store';
 //Routing imports
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Firebase
 import firebase from '../keys/firebase.js';
@@ -35,13 +35,11 @@ const MainScreen = () => {
     <>
       <NavigationBar />
       <Jumbo />
-      <Router basename="/">
-        <Switch>
-          <Route path="/play" component={QuizPickerScreen} />
-          <Route path="/create" component={CreateQuizScreen} />
-          <Route exact path="/" component={WelcomeScreen} />
-        </Switch>
-      </Router>
+      <Switch>
+        <Route path="/play" component={QuizPickerScreen} />
+        <Route path="/create" component={CreateQuizScreen} />
+        <Route exact path="/" component={WelcomeScreen} />
+      </Switch>
       <Footer />
     </>
   );

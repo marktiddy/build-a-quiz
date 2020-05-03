@@ -1,10 +1,10 @@
-import React from "react";
-import "./App.scss";
+import React from 'react';
+import './App.scss';
 
 //New store
-import Store from "./context/Store";
+import Store from './context/Store';
 
-import MainScreen from "./screens/MainScreen";
+import MainScreen from './screens/MainScreen';
 
 const App = () => {
   return (
