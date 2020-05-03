@@ -17,6 +17,10 @@
     "react-uuid": "^1.0.2",
     "uuid": "^7.0.3"
   },
+  "engines": {
+    "npm": "6.13.7",
+    "node": "12.14.0"
+  },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
