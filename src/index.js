@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename="/build-a-quiz">
+    <Router>
       <App />
     </Router>
   </React.StrictMode>,
