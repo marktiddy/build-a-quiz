@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  OverlayTrigger,
+  Tooltip,
+} from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 
 import QuizDetails from '../components/QuizForm/QuizDetails';
@@ -179,14 +186,24 @@ const CreateQuizScreen = () => {
                 Finished adding questions?
               </Button>
               <div className="reset-button-area">
-                <Button
-                  onClick={() => resetScreen()}
-                  type="button"
-                  size="sm"
-                  className="inline-button"
+                <OverlayTrigger
+                  key="left"
+                  placement="left"
+                  overlay={
+                    <Tooltip id="warning-tooltip">
+                      Warning: This will delete your quiz
+                    </Tooltip>
+                  }
                 >
-                  Reset Quiz
-                </Button>
+                  <Button
+                    onClick={() => resetScreen()}
+                    type="button"
+                    size="sm"
+                    className="inline-button"
+                  >
+                    Reset Quiz
+                  </Button>
+                </OverlayTrigger>
               </div>
             </Col>
           </Row>

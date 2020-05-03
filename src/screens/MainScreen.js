@@ -35,17 +35,11 @@ const MainScreen = () => {
     <>
       <NavigationBar />
       <Jumbo />
-      <Router>
+      <Router basename="build-a-quiz">
         <Switch>
-          <Route path="/play">
-            <QuizPickerScreen />
-          </Route>
-          <Route path="/create">
-            <CreateQuizScreen />
-          </Route>
-          <Route path="/">
-            <WelcomeScreen />
-          </Route>
+          <Route path="/play" component={QuizPickerScreen} />
+          <Route path="/create" component={CreateQuizScreen} />
+          <Route path="/" component={WelcomeScreen} />
         </Switch>
       </Router>
       <Footer />

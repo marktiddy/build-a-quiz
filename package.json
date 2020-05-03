@@ -1,4 +1,5 @@
 {
+  "homepage": "https://marktiddy.github.io/build-a-quiz",
   "name": "build-a-quiz",
   "version": "0.1.0",
   "private": true,
@@ -17,6 +18,8 @@
     "uuid": "^7.0.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -38,6 +41,7 @@
     ]
   },
   "devDependencies": {
-    "firebase": "^7.14.1"
+    "firebase": "^7.14.1",
+    "gh-pages": "^2.2.0"
   }
 }
