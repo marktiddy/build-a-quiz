@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import {
+  Form,
+  Button,
+  Container,
+  Row,
+  Col,
+  ProgressBar,
+} from 'react-bootstrap';
 
 const Question = ({
   question: { question, answer, answers },
@@ -10,6 +17,22 @@ const Question = ({
   const [selected, setSelected] = useState(answers[0]);
   const [showQuestion, setShowQuestion] = useState(true);
   const [localScore, setLocalScore] = useState(score);
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    const currentTime = time;
+    const timer = () => {
+      setTimeout(() => {
+        setTime(currentTime + 5);
+      }, 1000);
+    };
+
+    if (time !== 100) {
+      timer();
+    } else {
+      answerCheck(selected);
+    }
+  }, [time]);
 
   const answerCheck = (selected) => {
     if (selected === answer) {
@@ -47,11 +70,11 @@ const Question = ({
               ) : (
                 <div className="show-answers-container">
                   <p>
-                    You answered:{" "}
+                    You answered:{' '}
                     <span className="show-answers-span">{selected}</span>
                   </p>
                   <p>
-                    The correct answer is:{" "}
+                    The correct answer is:{' '}
                     <span className="show-answers-span">{answer}</span>
                   </p>
                   {localScore === score ? (
@@ -97,6 +120,16 @@ const Question = ({
               <p className="question-form--score">Score: {localScore}</p>
             </Col>
           </Row>
+          <Col>
+            <Row>
+              {showQuestion ? (
+                <div className="question-timer">
+                  <p>Time remaining to answer...</p>
+                  <ProgressBar striped animated variant="info" now={time} />
+                </div>
+              ) : null}
+            </Row>
+          </Col>
         </Container>
       </Form>
     </>
