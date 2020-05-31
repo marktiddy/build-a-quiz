@@ -10,7 +10,6 @@ import firebase from '../keys/firebase.js';
 
 //Components
 import NavigationBar from '../components/NavigationBar';
-import Jumbo from '../components/Jumbo';
 import QuizPickerScreen from './QuizPickerScreen';
 import WelcomeScreen from './WelcomeScreen';
 import CreateQuizScreen from './CreateQuizScreen';
@@ -33,7 +32,7 @@ const MainScreen = () => {
 
   return (
     <>
-      <NavigationBar />
+      {/* <NavigationBar /> */}
       <Switch>
         <Route path="/play" component={QuizPickerScreen} />
         <Route path="/create" component={CreateQuizScreen} />

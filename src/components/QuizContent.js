@@ -40,9 +40,12 @@ const QuizContent = () => {
           {quiz[0] ? (
             <Col>
               <h2 className="quiz-title">{quiz[0].details.name}</h2>
-              <p className="progress-text">
-                Question {questionNum + 1} of {quiz[0].questions.length}
-              </p>
+              {quiz[0].questions[questionNum] ? (
+                <p className="progress-text">
+                  Question {questionNum + 1} of {quiz[0].questions.length}
+                </p>
+              ) : null}
+
               {quiz[0].questions[questionNum] ? (
                 <>
                   <Question

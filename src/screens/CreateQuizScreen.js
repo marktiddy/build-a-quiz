@@ -9,6 +9,8 @@ import {
 } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 
+import NavigationBar from '../components/NavigationBar';
+
 import QuizDetails from '../components/QuizForm/QuizDetails';
 import QuizQuestions from '../components/QuizForm/QuizQuestions';
 import Success from '../components/QuizForm/Success';
@@ -124,6 +126,7 @@ const CreateQuizScreen = () => {
 
   return (
     <>
+      <NavigationBar />
       {successState === true ? (
         <Success quizId={quizDetails.id} quizName={quizDetails.name} />
       ) : (

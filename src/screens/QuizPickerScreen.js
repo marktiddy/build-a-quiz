@@ -3,6 +3,7 @@ import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import QuizCard from '../components/QuizCard';
 import QuizContent from '../components/QuizContent';
 import { Context } from '../context/Store';
+import NavigationBar from '../components/NavigationBar';
 
 import { useRouteMatch, Switch, Route } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ const QuizPickerScreen = () => {
 
   return (
     <>
+      <NavigationBar />
       <Container>
         <Row>
           {/* Router for this component */}
