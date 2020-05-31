@@ -51,7 +51,4 @@ const MainScreen = () => {
   );
 };
 
-//TODO
-//ADD signout to nav bar
-
 export default MainScreen;
