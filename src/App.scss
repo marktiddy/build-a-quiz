@@ -3,7 +3,7 @@
 
 //Color variables
 $yellow: #d7a62c;
-$orange: #f8841b;
+$orange: #6b3651;
 $red: #db332c;
 $mauve: #8b2242;
 $purple: #2f1d35;
@@ -290,4 +290,8 @@ h1 {
   position: absolute;
   top: 0;
   right: 10px;
+}
+
+.welcome-card {
+  border: 1px solid $purple;
 }

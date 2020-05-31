@@ -6,6 +6,17 @@ const WelcomeScreen = () => {
     <Container>
       <Row>
         <Col>
+          <Card className="text-center welcome-card">
+            <Card.Body>
+              <Card.Text>
+                {' '}
+                Welcome to Build-a-Quiz. The website that let's you play quizzes
+                and create your own to share with friends.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
           <Card className="text-center quiz-card">
             <Card.Body>
               <p className="quiz-card-title">Play Quizzes</p>
@@ -17,8 +28,6 @@ const WelcomeScreen = () => {
               </Button>
             </Card.Body>
           </Card>
-        </Col>
-        <Col>
           <Card className="text-center quiz-card">
             <Card.Body>
               <p className="quiz-card-title">Create a Quiz</p>
