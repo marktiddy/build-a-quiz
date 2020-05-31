@@ -55,7 +55,6 @@ h1 {
 .quiz-title {
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid $orange;
   color: $purple;
 }
 
@@ -190,4 +189,105 @@ h1 {
 
 .question-timer {
   width: 100%;
+}
+
+.fontawesomeicon {
+  margin-right: 10px;
+}
+
+.navigation-bar {
+  margin-bottom: 25px;
+}
+
+.quiz-card {
+  background: $purple;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.quiz-card-title {
+  font-size: 24px;
+  color: white;
+}
+
+.btn-white {
+  background: white;
+  color: $purple;
+}
+
+.btn-white:hover {
+  background: $orange;
+}
+
+.question-box {
+  text-align: center;
+  background: $purple;
+  color: white;
+  font-size: 1.3rem;
+  padding: 10px;
+  margin: 3px;
+  text-transform: capitalize;
+}
+
+.next-question-box {
+  text-align: center;
+  background: linear-gradient(to right, $orange 50%, $purple 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  color: white;
+  font-size: 1.3rem;
+  padding: 10px;
+  margin: 3px;
+  text-transform: capitalize;
+  transition: all 500ms;
+}
+
+.next-question-box:hover {
+  background-position: left bottom;
+  cursor: pointer;
+}
+
+.answer-box,
+.revealed-answer-box {
+  padding: 10px;
+  background: linear-gradient(to right, $orange 50%, $mauve 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  border: 3px solid white;
+  text-transform: capitalize;
+  transition: all 500ms;
+}
+
+.answer-box:hover {
+  background-position: left bottom;
+  cursor: pointer;
+}
+
+.time-box {
+  margin: 3px;
+}
+
+.time-progress {
+  width: 100%;
+  background: white;
+  margin-left: -15px;
+}
+.progress-text {
+  margin-top: -20px;
+  color: $mauve;
+}
+
+.score-tracker {
+  background: $mauve;
+  color: $white;
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5%;
+  position: absolute;
+  top: 0;
+  right: 10px;
 }

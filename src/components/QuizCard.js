@@ -8,15 +8,18 @@ const QuizCard = ({
   },
 }) => {
   const match = useRouteMatch();
+
   return (
     <>
-      <Card style={{ width: '18rem' }} className="quiz-chooser-card">
-        <Card.Header className="quiz-chooser-card--header text-capitalize">
-          {name}
-        </Card.Header>
+      <Card style={{ width: '18rem' }} className="quiz-chooser-card quiz-card">
         <Card.Body>
+          <p className="quiz-card-title">{name}</p>
           <Card.Text>{description}</Card.Text>
-          <Button variant="primary" href={`${match.url}/${id}`}>
+          <Button
+            variant="primary"
+            className="btn-white"
+            href={`${match.url}/${id}`}
+          >
             Play Quiz
           </Button>
         </Card.Body>

@@ -40,15 +40,9 @@ const QuizContent = () => {
           {quiz[0] ? (
             <Col>
               <h2 className="quiz-title">{quiz[0].details.name}</h2>
-              <div>
-                <ProgressBar
-                  striped
-                  animated
-                  variant="info"
-                  now={progress}
-                  label={`${progress}% through quiz`}
-                />
-              </div>
+              <p className="progress-text">
+                Question {questionNum + 1} of {quiz[0].questions.length}
+              </p>
               {quiz[0].questions[questionNum] ? (
                 <>
                   <Question

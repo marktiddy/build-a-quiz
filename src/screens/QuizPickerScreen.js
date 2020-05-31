@@ -12,6 +12,8 @@ const QuizPickerScreen = () => {
 
   const quizList = state.quizzes;
 
+  //function for assigning random colors:
+
   return (
     <>
       <Container>

@@ -34,7 +34,6 @@ const MainScreen = () => {
   return (
     <>
       <NavigationBar />
-      <Jumbo />
       <Switch>
         <Route path="/play" component={QuizPickerScreen} />
         <Route path="/create" component={CreateQuizScreen} />
