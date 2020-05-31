@@ -214,6 +214,17 @@ h1 {
   color: white;
 }
 
+.btn-toggle {
+  color: $orange;
+  text-decoration: underline;
+  transition: all 500ms;
+}
+
+.btn-toggle:hover {
+  cursor: pointer;
+  color: $purple;
+}
+
 .btn-white {
   background: white;
   color: $purple;

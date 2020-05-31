@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { AuthContext } from '../context/Auth';
 
 const NavigationBar = () => {
+  const { authenticated } = useContext(AuthContext);
+
   return (
     <Navbar bg="dark" variant="dark" expand="md" className="navigation-bar">
       <Navbar.Brand href="/">
@@ -18,6 +21,13 @@ const NavigationBar = () => {
           <Nav.Link href="/create">Create A Quiz</Nav.Link>
         </Nav>
       </Navbar.Collapse>
+      {authenticated ? (
+        <Nav className="mr-auto">
+          <Nav.Link inline href="/signout">
+            Sign Out
+          </Nav.Link>
+        </Nav>
+      ) : null}
     </Navbar>
   );
 };

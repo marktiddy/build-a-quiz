@@ -1,12 +1,5 @@
 import React, { useContext, useState } from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  ProgressBar,
-  Spinner,
-  Button,
-} from 'react-bootstrap';
+import { Container, Row, Col, Spinner, Button } from 'react-bootstrap';
 
 import { useParams } from 'react-router-dom';
 import { Context } from '../context/Store';
@@ -17,7 +10,6 @@ const QuizContent = () => {
   const [state] = useContext(Context);
   const [questionNum, setQuestionNum] = useState(0);
   const [score, setScore] = useState(0);
-  const [progress, setProgress] = useState(0);
 
   //Set Up
   let { quizId } = useParams();
@@ -28,9 +20,6 @@ const QuizContent = () => {
     //Set our returned score
     setScore(localScore);
     setQuestionNum(questionNum + 1);
-    setProgress(
-      ((questionNum + 1) / quiz[0].questions.length).toFixed(2) * 100
-    );
   };
 
   return (

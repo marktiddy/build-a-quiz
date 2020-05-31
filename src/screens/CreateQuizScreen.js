@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Container,
   Row,
@@ -8,6 +8,7 @@ import {
   Tooltip,
 } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
+import { AuthContext } from '../context/Auth';
 
 import NavigationBar from '../components/NavigationBar';
 
@@ -23,11 +24,13 @@ const CreateQuizScreen = () => {
   const [successState, setSuccessState] = useState(false);
   const [questionToEdit, setQuestionToEdit] = useState(null);
   const [editingIdx, setEditingIdx] = useState(null);
+  const { currentUser } = useContext(AuthContext);
 
   //Set up firebase
   var db = firebase.firestore();
 
   useEffect(() => {
+    console.log(currentUser);
     //Check if the user is already putting a quiz together
     var localQuiz = JSON.parse(localStorage.getItem('quizDetails'));
     if (localQuiz) {
@@ -45,6 +48,7 @@ const CreateQuizScreen = () => {
       name,
       id: uuidv4(),
       questions: 0,
+      owner: currentUser.uid,
     };
     setQuizDetails(quizDetailsObject);
 
