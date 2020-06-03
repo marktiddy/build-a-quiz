@@ -310,3 +310,24 @@ h1 {
 .welcome-card {
   border: 1px solid $purple;
 }
+
+.user-avatar {
+  margin-top: 2px;
+  height: 30px;
+  width: 30px;
+  margin-right: 8px;
+}
+
+.user-menu {
+  align-items: right;
+  justify-content: flex-end;
+}
+
+.navbar-toggler-icon {
+  transition: 300ms all;
+}
+
+.loading-spinner {
+  margin-top: 30px;
+  text-align: center;
+}

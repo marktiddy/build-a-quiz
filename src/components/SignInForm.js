@@ -10,7 +10,6 @@ const SignInForm = ({ history }) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        console.log('this is running');
         await firebase
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);

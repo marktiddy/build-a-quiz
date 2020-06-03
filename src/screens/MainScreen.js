@@ -11,6 +11,8 @@ import firebase from '../keys/firebase.js';
 
 //Components
 import QuizPickerScreen from './QuizPickerScreen';
+import ProfileScreen from './ProfileScreen';
+import LoadingScreen from './LoadingScreen';
 import WelcomeScreen from './WelcomeScreen';
 import CreateQuizScreen from './CreateQuizScreen';
 import Footer from './Footer';
@@ -39,10 +41,17 @@ const MainScreen = () => {
         <Route path="/play" component={QuizPickerScreen} />
         <Route path="/signout" component={SignOutRoute} />
         {authenticated ? (
-          <Route path="/create" component={CreateQuizScreen} />
+          <>
+            <Route path="/create" component={CreateQuizScreen} />
+            <Route path="/profile" component={ProfileScreen} />
+          </>
         ) : (
-          <Route path="/create" component={WelcomeScreen} />
+          <>
+            <Route path="/create" component={WelcomeScreen} />
+            <Route path="/profile" component={LoadingScreen} />
+          </>
         )}
+
         <Route exact path="/" component={WelcomeScreen} />
         <Route path="*" component={ErrorPage} />
       </Switch>

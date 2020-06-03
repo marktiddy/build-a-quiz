@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Dropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../context/Auth';
+import avatar from '../img/avatar.png';
 
 const NavigationBar = () => {
-  const { authenticated } = useContext(AuthContext);
+  const { authenticated, currentUser } = useContext(AuthContext);
 
   return (
     <Navbar bg="dark" variant="dark" expand="md" className="navigation-bar">
@@ -22,11 +23,22 @@ const NavigationBar = () => {
         </Nav>
       </Navbar.Collapse>
       {authenticated ? (
-        <Nav className="mr-auto">
-          <Nav.Link inline href="/signout">
-            Sign Out
-          </Nav.Link>
-        </Nav>
+        <Navbar.Collapse id="user-menu">
+          <Dropdown>
+            <Dropdown.Toggle className="btn-white" id="profile-dropdown-menu">
+              {currentUser.photoURL ? (
+                <img src={currentUser.photoURL} alt="" />
+              ) : (
+                <img src={avatar} className="user-avatar" alt="User Avatar" />
+              )}
+              {currentUser.displayName ? currentUser.displayName : 'Profile'}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="/profile">Edit Profile</Dropdown.Item>
+              <Dropdown.Item href="/signout">Sign Out</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Navbar.Collapse>
       ) : null}
     </Navbar>
   );
