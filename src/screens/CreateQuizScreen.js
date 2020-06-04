@@ -10,7 +10,6 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import { AuthContext } from '../context/Auth';
 
-import NavigationBar from '../components/NavigationBar';
 
 import QuizDetails from '../components/QuizForm/QuizDetails';
 import QuizQuestions from '../components/QuizForm/QuizQuestions';
@@ -130,7 +129,6 @@ const CreateQuizScreen = () => {
 
   return (
     <>
-      <NavigationBar />
       {successState === true ? (
         <Success quizId={quizDetails.id} quizName={quizDetails.name} />
       ) : (

@@ -1,11 +1,9 @@
 import React from 'react';
-import NavigationBar from '../components/NavigationBar';
 import { Container, Col, Row } from 'react-bootstrap';
 
 const ErrorPage = () => {
   return (
     <>
-      <NavigationBar />
       <Container>
         <Row>
           <Col>

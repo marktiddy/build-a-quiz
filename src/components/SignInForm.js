@@ -22,7 +22,7 @@ const SignInForm = ({ history }) => {
   );
 
   return (
-    <Form onSubmit={handleSignIn}>
+    <Form onSubmit={handleSignIn} id="sign-in-form">
       <Form.Group controlId="email">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" required />

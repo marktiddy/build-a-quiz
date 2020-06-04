@@ -129,9 +129,9 @@ h1 {
 .error-message {
   background: $orange;
   color: white;
-  border: 1px solid $red;
+ 
   margin: 5px 0;
-  padding: 0 5px;
+  padding: 2px 5px;
   font-size: 14px;
   font-weight: 600;
   text-transform: capitalize;
@@ -316,6 +316,7 @@ h1 {
   height: 30px;
   width: 30px;
   margin-right: 8px;
+  border-radius:50%;
 }
 
 .user-menu {
@@ -330,4 +331,12 @@ h1 {
 .loading-spinner {
   margin-top: 30px;
   text-align: center;
+}
+
+.inline-avatar {
+  margin-top: 20px;
+  margin-right:20px;
+  width: 125px;
+  height: 125px;
+  border-radius:50%;
 }

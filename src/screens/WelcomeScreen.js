@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { Card, Button, Container, Col, Row } from 'react-bootstrap';
-import NavigationBar from '../components/NavigationBar';
 import { AuthContext } from '../context/Auth';
 
 //import components for signing in/registering
@@ -18,9 +17,10 @@ const WelcomeScreen = ({ history }) => {
     }
   };
 
+
   return (
     <>
-      <NavigationBar />
+      
       <Container>
         <Row>
           <Col>

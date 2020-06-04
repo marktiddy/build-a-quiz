@@ -18,6 +18,9 @@ import CreateQuizScreen from './CreateQuizScreen';
 import Footer from './Footer';
 import SignOutRoute from '../components/SignOutRoute';
 import ErrorPage from '../screens/404';
+import NavigationBar from '../components/NavigationBar'
+
+
 
 const MainScreen = () => {
   const [state, dispatch] = useContext(Context);
@@ -37,9 +40,14 @@ const MainScreen = () => {
 
   return (
     <>
+    <NavigationBar />
       <Switch>
         <Route path="/play" component={QuizPickerScreen} />
         <Route path="/signout" component={SignOutRoute} />
+        <Route exact path="/" component={WelcomeScreen} />
+                       
+
+
         {authenticated ? (
           <>
             <Route path="/create" component={CreateQuizScreen} />
@@ -51,9 +59,7 @@ const MainScreen = () => {
             <Route path="/profile" component={LoadingScreen} />
           </>
         )}
-
-        <Route exact path="/" component={WelcomeScreen} />
-        <Route path="*" component={ErrorPage} />
+ <Route path="*" component={ErrorPage} />
       </Switch>
       <Footer />
     </>

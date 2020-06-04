@@ -1,11 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { Spinner, Container, Col, Row } from 'react-bootstrap';
-import NavigationBar from '../components/NavigationBar';
 
 const LoadingScreen = () => {
   return (
     <>
-      <NavigationBar />
+
       <Container>
         <Row>
           <Col className="loading-spinner">

@@ -27,7 +27,7 @@ const NavigationBar = () => {
           <Dropdown>
             <Dropdown.Toggle className="btn-white" id="profile-dropdown-menu">
               {currentUser.photoURL ? (
-                <img src={currentUser.photoURL} alt="" />
+                <img src={currentUser.photoURL} alt="" className="user-avatar" />
               ) : (
                 <img src={avatar} className="user-avatar" alt="User Avatar" />
               )}
