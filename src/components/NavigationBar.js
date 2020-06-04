@@ -23,8 +23,8 @@ const NavigationBar = () => {
         </Nav>
       </Navbar.Collapse>
       {authenticated ? (
-        <Navbar.Collapse id="user-menu">
-          <Dropdown>
+        <Navbar.Collapse id="user-menu" >
+          <Dropdown className="navbar-nav ml-auto">
             <Dropdown.Toggle className="btn-white" id="profile-dropdown-menu">
               {currentUser.photoURL ? (
                 <img src={currentUser.photoURL} alt="" className="user-avatar" />

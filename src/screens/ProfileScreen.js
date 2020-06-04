@@ -61,10 +61,8 @@ uploadTask.on(
   },
   () => {
     storage.ref('avatars').child(selectedFile.name).getDownloadURL().then(url => {
-console.log(url)
       if (currentUser.photoURL) {
-//User already has a photo so we want to delete it
-//Then we update the profile
+
 
 
 //Script to grab filename from URL

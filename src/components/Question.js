@@ -13,6 +13,18 @@ const Question = ({
   const [localScore, setLocalScore] = useState(score);
   const [time, setTime] = useState(0);
 
+const answerCheck = (userAns) => {
+    if (userAns === answer) {
+      console.log('comparing ' + userAns + ' with ' + answer);
+      //they're correct. update local score
+
+      setLocalScore(localScore + 1);
+    }
+    //Finally show the answer
+    setShowQuestion(false);
+  };
+
+
   useEffect(() => {
     const currentTime = time;
     const timer = () => {
@@ -33,16 +45,7 @@ const Question = ({
     answerCheck(a);
   };
 
-  const answerCheck = (userAns) => {
-    if (userAns === answer) {
-      console.log('comparing ' + userAns + ' with ' + answer);
-      //they're correct. update local score
-
-      setLocalScore(localScore + 1);
-    }
-    //Finally show the answer
-    setShowQuestion(false);
-  };
+  
 
   return (
     <>

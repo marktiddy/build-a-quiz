@@ -6,11 +6,11 @@ const Success = ({ quizName, quizId }) => {
     <Container>
       <Row>
         <Col className="text-center">
-          <h2 class="quiz-title">Success!</h2>
+          <h2 className="quiz-title">Success!</h2>
         </Col>
       </Row>
       <Row>
-        <p class="purple-text">Your {quizName} has been added</p>
+        <p className="purple-text">Your {quizName} has been added</p>
       </Row>
       <Row>
         <Button variant="primary" href={`/play/${quizId}`}>
